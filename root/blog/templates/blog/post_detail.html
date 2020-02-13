@@ -29,4 +29,10 @@
         <a href="{% url 'blog:tag_cloud' %}">[Tag Cloud]</a>
 
     </div>
+
+    <hr>
+    <div>
+        {% load disqus_tags %}
+        {% disqus_show_comments %}
+    </div>
 {% endblock %}
