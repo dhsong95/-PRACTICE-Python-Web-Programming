@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Album 리스트입니다</h3>
+
+    {% for album in object_list %}
+        <div>
+            <h2 style="display: inline"><a href="{{ album.get_absolute_url }}">{{ album.name }}</a></h2>
+            &emsp;<b><i> {{ album.description }}</i></b>
+        </div>
+
+        <hr>
+
+        <div>
+            {% for photo in album.photo_set.all|slice:":5" %}
+                <div style="display: inline">
+                    <a href="{{ photo.get_absolute_url }}"><img src="{{ photo.image.thumb_url }}"/></a>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+{% endblock %}

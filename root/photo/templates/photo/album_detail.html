@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h3 style="display: inline">{{ object.name }}</h3>
+        &emsp;<b><i>{{ object.description }}</i></b>
+    </div>
+
+    <hr>
+
+    <div>
+        {% for photo in object.photo_set.all %}
+            <div>
+                <a href="{{ photo.get_absolute_url }}"><img src="{{ photo.image.thumb_url }}"/></a>
+                <p><a href="{{ photo.get_absolute_url }}">{{ photo.title }}</a></p>
+                <p>{{ photo.upload_date|date:"Y-m-d"}}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>{{ object.title }}</h3>
+
+    <table>
+        <tr>
+            <td><img src="{{ object.image.url }}"/></td>
+            <td>
+                <ul>
+                    <li><b>Photo Description</b><br><i>{{ object.description|linebreaks }}</i></li>
+                    <li><b>Date Uploaded</b><br><i>{{ object.upload_date }}</i></li>
+                    <li><b>Album Name</b><br><i>{{ object.album.name }}</i></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+{% endblock %}
