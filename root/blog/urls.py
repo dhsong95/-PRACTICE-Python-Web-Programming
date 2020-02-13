@@ -12,4 +12,6 @@ urlpatterns = [
     path('archive/<int:year>/<slug:month>/', views.PostMAV.as_view(), name='post_archive_month'),
     path('archive/<int:year>/<slug:month>/<int:day>/', views.PostDAV.as_view(), name='post_archive_day'),
     path('archive/today/', views.PostTAV.as_view(), name='post_archive_today'),
+    path('tag/', views.TagTV.as_view(), name='tag_cloud'),
+    re_path('tag/(?P<tag>[^/]+(?u))/$', views.PostTOL.as_view(), name='tagged_object_list'),
 ]

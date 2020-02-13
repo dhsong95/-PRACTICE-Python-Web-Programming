@@ -17,4 +17,16 @@
     <div>
         {{ object.content|linebreaks }}
     </div>
+
+    <div>
+        <b>TAGS:</b>
+        {% load tagging_tags %}
+        {% tags_for_object object as tags %}
+        {% for tag in tags %}
+            <a href="{% url 'blog:tagged_object_list' tag.name %}">{{ tag.name }}</a>
+        {% endfor %}
+
+        <a href="{% url 'blog:tag_cloud' %}">[Tag Cloud]</a>
+
+    </div>
 {% endblock %}
