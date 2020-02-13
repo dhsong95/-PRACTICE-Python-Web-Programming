@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <a href="{% url 'blog:search' %}">검색하기</a>
     <h2>Blog List</h2>
 
     {% for post in posts %}

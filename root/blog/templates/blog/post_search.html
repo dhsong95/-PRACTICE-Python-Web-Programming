@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="{% url 'blog:search' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_table }}
+        <input type="submit" value="검색">
+    </form>
+
+    {% if object_list %}
+        <h2>{{ search_word }} 검색 결과</h2>
+        {% for post in object_list %}
+            <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+            <p>{{ post.modify_date|date:"N d, Y"}}</p>
+            <p>{{ post.description }}</p>
+        {% endfor %}
+    {% elif search_word %}
+        <p>검색 결과가 없습니다.</p>
+    {% endif %}
+{% endblock %}
