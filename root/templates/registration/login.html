@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Please Login</h2>
+
+    <form action="." method="post">
+        {% csrf_token %}
+        <p>Please enter you id and password</p>
+        <fieldset>
+            <div>
+                {{ form.username.label_tag }} {{ form.username }}
+            </div>
+            <div>
+                {{ form.password.label_tag }} {{ form.password }}
+            </div>
+        </fieldset>
+
+        <input type="submit" value="로그인">
+        <!-- 로그인 성공 후 리다이렉션 될 URL (settings.py의 LOGIN_REDIRECT_URL) -->
+        <input type="hidden" name="next" value="{{ next }}">
+
+        <script type="javascript">
+            document.getElementById("id_username").focus();
+        </script>
+    </form>
+{% endblock %}

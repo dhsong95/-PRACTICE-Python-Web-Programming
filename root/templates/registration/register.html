@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>New User Registration</h2>
+
+    <form action="." method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <p>Wrong! Please correct the error(s) below</p>
+            <p>{{form.errors}}</p>
+        {% endif %}
+
+        <p>Please enter your username</p>
+        <fieldset>
+            <div>
+                {{ form.username.label_tag }} {{ form.username }}
+            </div>
+            <div>
+                {{ form.password1.label_tag }} {{ form.password1 }}
+            </div>
+            <div>
+                {{ form.password2.label_tag }} {{ form.password2 }}
+            </div>
+        </fieldset>
+        <input type="submit" value="가입하기">
+        <script type="javascript">
+            document.getElementById("id_username").focus();
+        </script>
+    </form>
+{% endblock %}

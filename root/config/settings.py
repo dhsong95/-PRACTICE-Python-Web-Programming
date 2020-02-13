@@ -48,6 +48,10 @@ INSTALLED_APPS = [
 DISQUS_WEBSITE_SHORTNAME = 'webprogramming-4'
 SITE_ID = 1
 
+LOGIN_URL = '/accounts/login/'
+LOGOUT_URL = '/accounts/logout/'
+LOGIN_REDIRECT_URL = '/'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

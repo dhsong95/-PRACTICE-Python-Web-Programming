@@ -5,6 +5,13 @@
     <title>Bookmark Application</title>
 </head>
 <body>
+    {% if user.is_active %}
+        <p>환영합니다 {{ user.username }} <a href="{% url 'logout' %}">로그아웃</a></p>
+    {% else %}
+        <a href="{% url 'login' %}">로그인하기</a>
+        <a href="{% url 'register' %}">회원가입하기</a>
+    {% endif %}
+
     {% block content %}
     {% endblock %}
 </body>
