@@ -2,6 +2,12 @@
 
 {% block content %}
     <a href="{% url 'blog:search' %}">검색하기</a>
+
+    {% if user.is_active %}
+        <a href="{% url 'blog:post_create' %}">생성하기</a>
+        <a href="{% url 'blog:post_change_list' %}">수정하기</a>
+    {% endif %}
+
     <h2>Blog List</h2>
 
     {% for post in posts %}

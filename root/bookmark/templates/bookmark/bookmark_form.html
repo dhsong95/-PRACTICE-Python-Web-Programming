@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Bookmark Create/Update - {{ user }}</h2>
+
+    <form action="." method="post">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div>
+                <p>Please correct the errors(s) below</p>
+            </div>
+        {% endif %}
+
+        <p>This is a creation or update form for you bookmark.</p>
+        <fieldset>
+            <div>
+                {{ form.title.label_tag }} {{ form.title }}
+            </div>
+            <div>
+                {{ form.url.label_tag }} {{ form.url }}
+            </div>
+        </fieldset>
+        <input type="submit" value="제출하기">
+
+        <script>
+            document.getElementById("id_title").focus();
+        </script>
+    </form>
+{% endblock %}

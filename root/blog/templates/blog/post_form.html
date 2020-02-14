@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Post Create/Update - {{ user }}</h2>
+
+    <form action="." method="post">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <p>Correct the error(s) below</p>
+        {% endif %}
+
+        <fieldset>
+            <div>
+                {{ form.title.label_tag }} {{ form.title }}
+            </div>
+            <div>
+                {{ form.description.label_tag }} {{ form.description }}
+            </div>
+            <div>
+                {{ form.content.label_tag }} {{ form.content }}
+            </div>
+            <div>
+                {{ form.tag.label_tag }} {{ form.tag }}
+            </div>
+        </fieldset>
+        <input type="submit" value="제출하기">
+    </form>
+    <script>
+        document.getElementById("id_title").focus();
+    </script>
+{% endblock %}

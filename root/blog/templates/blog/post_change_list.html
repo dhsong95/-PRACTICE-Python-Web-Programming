@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Post Change - {{ user }}</h2>
+
+    <table>
+        <thead>
+            <td>Title</td>
+            <td>Description</td>
+            <td>Owner</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </thead>
+        <tbody>
+            {% for post in object_list %}
+                <tr>
+                    <td>{{ post.title }}</td>
+                    <td>{{ post.description }}</td>
+                    <td>{{ post.owner }}</td>
+                    <td><a href="{% url 'blog:post_update' post.id %}">Update</a></td>
+                    <td><a href="{% url 'blog:post_delete' post.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

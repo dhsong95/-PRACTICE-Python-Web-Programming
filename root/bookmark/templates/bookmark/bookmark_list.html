@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+    {% if user.is_active %}
+        <a href="{% url 'bookmark:bookmark_create' %}">생성하기</a>
+        <a href="{% url 'bookmark:bookmark_change_list' %}">수정하기</a>
+    {% endif %}
+
     <h2>Bookmark List</h2>
 
     <ul>

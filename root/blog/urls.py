@@ -15,4 +15,8 @@ urlpatterns = [
     path('tag/', views.TagTV.as_view(), name='tag_cloud'),
     re_path('tag/(?P<tag>[^/]+(?u))/$', views.PostTOL.as_view(), name='tagged_object_list'),
     path('search/', views.SearchFormView.as_view(), name='search'),
+    path('add/', views.PostCreateView.as_view(), name='post_create'),
+    path('change/', views.PostChangeLV.as_view(), name='post_change_list'),
+    path('<int:pk>/update/', views.PostUpdateView.as_view(), name='post_update'),
+    path('<int:pk>/delete/', views.PostDeleteView.as_view(), name='post_delete'),
 ]

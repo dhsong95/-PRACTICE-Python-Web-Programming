@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Bookmark Change - {{ user }}</h2>
+
+    <table>
+        <thead>
+            <td>Title</td>
+            <td>Url</td>
+            <td>Owner</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </thead>
+        <tbody>
+            {% for bookmark in object_list %}
+                <tr>
+                    <td>{{ bookmark.title }}</td>
+                    <td><a href="{{ bookmark.url }}">{{ bookmark.url }}</a></td>
+                    <td>{{ bookmark.owner }}</td>
+                    <td><a href="{% url 'bookmark:bookmark_update' bookmark.id %}">Update</a></td>
+                    <td><a href="{% url 'bookmark:bookmark_delete' bookmark.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
