@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Photo Create/Update - {{ user }}</h3>
+
+    {% if form.is_multipart %}
+        <form enctype="multipart/form-data" method="post" action=".">
+    {% else %}
+        <form enctype="multipart/form-data" method="post" action=".">
+    {% endif %}
+
+            {% csrf_token %}
+            {% if form.errors %}
+                <p>Please Correct the error</p>
+            {% endif %}
+
+            <p>This is creation or update form for you photo</p>
+            <fieldset>
+                <div>
+                    {{ form.image.label_tag }} {{ form.image }}
+                </div>
+                <div>
+                    {{ form.album.label_tag }} {{ form.album }}
+                </div>
+                <div>
+                    {{ form.title.label_tag }} {{ form.title }}
+                </div>
+                <div>
+                    {{ form.description.label_tag }} {{ form.description }}
+                </div>
+            </fieldset>
+            <input type="submit" value="제출">
+        </form>
+{% endblock %}

@@ -1,5 +1,6 @@
 from django.urls import reverse
 from django.db import models
+from django.contrib.auth.models import User
 from . import fields
 
 
@@ -7,6 +8,7 @@ from . import fields
 class Album(models.Model):
     name = models.CharField(max_length=50)
     description = models.CharField('One Line Description', max_length=100)
+    owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['name']
@@ -24,6 +26,7 @@ class Photo(models.Model):
     upload_date = models.DateTimeField('Upload Date', auto_now_add=True)
     image = fields.ThumbnailImageField()
     album = models.ForeignKey('Album', on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, null=True, on_delete=models.CASCADE)
 
     class Meta:
         ordering = ['title']

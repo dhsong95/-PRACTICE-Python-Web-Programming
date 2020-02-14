@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Album-Photo InlineFormSet</h2>
+
+    {% if form.is_multipart or formset.is_multipart %}
+        <form enctype="multipart/form-data" method="post" action=".">
+    {% else %}
+        <form method="post" action=".">
+    {% endif %}
+
+            {% csrf_token %}
+
+            {% if form.errors %}
+                <p>Please correct the FORM error(s)</p>
+            {% endif %}
+
+            {% if formset.errors %}
+                <p>Please correct the FORMSET error(s)</p>
+            {% endif %}
+
+            <h4>Create of Update Album contents</h4>
+            <fieldset>
+                <div>
+                    {{ form.name.label_tag }} {{ form.name }}
+                </div>
+                <div>
+                    {{ form.description.label_tag }} {{ form.description }}
+                </div>
+            </fieldset>
+
+            <h4>Create of Update Photo contents</h4>
+            {{ formset.management_form }}
+            {% for form in formset %}
+                {{ form.id }}
+                <fieldset>
+                    <div>
+                        {{ form.image.label_tag }} {{ form.image }}
+                    </div>
+                    <div>
+                        {{ form.title.label_tag }} {{ form.title }}
+                    </div>
+                    <div>
+                        {{ form.description.label_tag }} {{ form.description }}
+                    </div>
+                </fieldset>
+            {% endfor %}
+
+            <input type="submit" value="제출">
+       </form>
+{% endblock %}

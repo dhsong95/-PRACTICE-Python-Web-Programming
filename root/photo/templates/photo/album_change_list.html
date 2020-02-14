@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h3>Album Change - {{ user }}</h3>
+
+    <table>
+        <thead>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Owner</td>
+            <td>Update</td>
+            <td>Delete</td>
+        </thead>
+        <tbody>
+            {% for album in object_list %}
+                <tr>
+                    <td>{{ album.name }}</td>
+                    <td>{{ album.description }}</td>
+                    <td>{{ album.owner }}</td>
+                    <td><a href="{% url 'photo:album_update' album.id %}">Update</a></td>
+                    <td><a href="{% url 'photo:album_delete' album.id %}">Delete</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

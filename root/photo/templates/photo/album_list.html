@@ -3,6 +3,13 @@
 {% block content %}
     <h3>Album 리스트입니다</h3>
 
+    {% if user.is_active %}
+        <a href="{% url 'photo:album_create'%}">앨범 생성하기</a>
+        <a href="{% url 'photo:album_change_list'%}">앨범 수정하기</a>
+        <a href="{% url 'photo:photo_create'%}">사진 생성하기</a>
+        <a href="{% url 'photo:photo_change_list'%}">사진 수정하기</a>
+    {% endif %}
+
     {% for album in object_list %}
         <div>
             <h2 style="display: inline"><a href="{{ album.get_absolute_url }}">{{ album.name }}</a></h2>
